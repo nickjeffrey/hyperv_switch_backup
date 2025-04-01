@@ -4,32 +4,32 @@ Powershell script to backup / restore virtual switches on a Hyper-V host
 # Perform a backup
 To backup the configuration of all virtual switches on a Hyper-V host to a JSON file:
 ```
-PS> X:\path\to\hyperv-switch-backup-restore.ps1 -Mode backup
+PS> X:\path\to\hyperv_switch_backup.ps1 -Mode backup
 ```
 
 # Perform a restore
 To restore a previously created backup, use the following syntax.  Please note that any virtual switches that already exist on the Hyper-V host will be skipped.
 ```
-PS> X:\path\to\hyperv-switch-backup-restore.ps1 -Mode restore -FilePath C:\backup\hyperv\vswitch\MyServerName.vswitch.backup.json
+PS> X:\path\to\hyperv_switch_backup.ps1 -Mode restore -FilePath C:\backup\hyperv\vswitch\MyServerName.vswitch.backup.json
 ```
 
 # Schedule weekly backups
 To automate backups of the Hyper-V virtual switch configs, you can use a scheduled task:
 ```
-schtasks.exe /create /RU SYSTEM /TN hyperv_backup /TR "powershell.exe x:\path\to\hyperv-switch-backup-restore.ps1 -Mode backup" /SC weekly /D FRI /ST 23:00
+schtasks.exe /create /RU SYSTEM /TN hyperv_backup /TR "powershell.exe x:\path\to\hyperv_switch_backup.ps1 -Mode backup" /SC weekly /D FRI /ST 23:00
 ```
 
 # Sample output
 
 Sample output for a backup job:
 ```
-PS C:\MyScripts> .\HyperV-switch-backup-restore.ps1 -Mode backup
+PS C:\MyScripts> .\hyperv_switch_backup.ps1 -Mode backup
 Backup completed: C:\backup\hyperv\vswitch\HYPERV2.vswitch.backup.json
 ```
 
 Sample output for a restore job:
 ```
-PS C:\MyScripts> .\HyperV-switch-backup-restore.ps1 -Mode restore -FilePath C:\backup\hyperv\vswitch\HYPERV2.vswitch.backup.json 
+PS C:\MyScripts> .\hyperv_switch_backup.ps1 -Mode restore -FilePath C:\backup\hyperv\vswitch\HYPERV2.vswitch.backup.json 
 Switch 'vswitch-external' already exists. Skipping.
 Creating switch: vswitch-private1 (Private)
 Creating switch: vswitch-private2 (Private)
@@ -39,7 +39,7 @@ Restore completed from: C:\backup\hyperv\vswitch\HYPERV2.vswitch.backup.json
 ```
 
 # Send backup report via email
-To send an email report showing the backup status, please edit the following section of the script:
+To send an email report showing the backup status, please edit the following section of the script to match your environment:
 ```
 $send_email = "yes"                                            #yes|no flag to send report via email to the sysadmin
 $hostname   = $env:computername                                #figure out the local hostname
