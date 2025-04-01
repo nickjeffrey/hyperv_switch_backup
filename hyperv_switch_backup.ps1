@@ -30,7 +30,7 @@ $subject    = "Hyper-V virtual switch backup from $hostname"   #subject of email
 $smtpserver = "MySmtpServer.example.com"                       #SMTP smart host used for relaying the email
 $port       = "25"                                             #SMTP TCP port
 $destdir    = "c:\backup\hyperv\vswitch"                       #location of backups
-$json_file  = "$hostname.hyperv.switch.backup.json"            #filename holding the backup
+$json_file  = "$hostname.hyperv.vswitch.backup.json"            #filename holding the backup
 
 
 # confirm the script is running with administrator privileges
