@@ -10,7 +10,7 @@ PS> X:\path\to\hyperv-switch-backup-restore.ps1 -Mode backup
 # Perform a restore
 To restore a previously created backup, use the following syntax.  Please note that any virtual switches that already exist on the Hyper-V host will be skipped.
 ```
-PS> X:\path\to\hyperv-switch-backup-restore.ps1 -Mode restore -FilePath X:\path\to\HyperV_SwitchBackup_yyyyddmm_hhmmss.json
+PS> X:\path\to\hyperv-switch-backup-restore.ps1 -Mode restore -FilePath C:\backup\hyperv\vswitch\MyServerName.vswitch.backup.json
 ```
 
 # Schedule weekly backups
